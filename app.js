@@ -15,7 +15,7 @@ const resetGame = () => {
     correctLetter = [];
     wrongguessed = 0;
     guessess.innerText = `${wrongguessed} / ${max}`;
-    hungmanImage.src = `/images/hangman-${wrongguessed}.svg`;
+    hungmanImage.src = `/hangman-game/hangman-game/images/hangman-${wrongguessed}.svg`;
     wordDisplay.innerHTML = currentWord.split("").map(() => ` <li class="letter"></li>`).join("");
     keyboardDiv.querySelectorAll("button").forEach(btn => {
         btn.disabled = false;
@@ -53,7 +53,7 @@ const initGame = (button, clickedLetter) => {
     } else {
         console.log(clickedLetter, "is not exit on the word");
         wrongguessed++;
-        hungmanImage.src = `/images/hangman-${wrongguessed}.svg`;
+        hungmanImage.src = `/hangman-game/hangman-game/images/hangman-${wrongguessed}.svg`;
     }
 
     button.disabled = true;
@@ -74,7 +74,7 @@ for (let i = 97; i <= 122; i++) {                         // 2
 const gameOver = (isVictory) => {
     setTimeout(() => {
         const modalText = isVictory ? `You found the word:` : `The correct word was:`;
-        gameModel.querySelector("img").src = `/images/${isVictory ? 'victory' : 'lost'}.gif`;
+        gameModel.querySelector("img").src = `/hangman-game/hangman-game/images/${isVictory ? 'victory' : 'lost'}.gif`;
         gameModel.querySelector("h4").innerText = `${isVictory ? 'Congrats!' : 'Game Over!'}`;
         gameModel.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`;
         gameModel.classList.add("show");
